@@ -1,0 +1,29 @@
+# 1957. Delete Characters to Make Fancy String
+Input: s = "leeetcode"
+Output: "leetcode"
+Explanation:
+Remove an 'e' from the first group of 'e's to create "leetcode".
+No three consecutive characters are equal, so return "leetcode".
+
+class Solution {
+    public String makeFancyString(String s) {
+    //Edge case: If the string has two or fewer characters returned as-is
+        if(s.length()<=2){
+            return s ; 
+        }
+        StringBuilder result = new StringBuilder();
+        int count = 2;  // at least 2  for the first  two character 
+        //add the first character to the result since we start counting from there
+        result.append(s.charAt(0));
+        result.append(s.charAt(1));
+        for(int i=2; i<s.length();i++){
+            if(s.charAt(i)==s.charAt(i-1) && s.charAt(i)==s.charAt(i-2)){
+                continue;
+            }
+            else{
+                result.append(s.charAt(i));
+            }
+        }
+        return result.toString();
+    }
+}
