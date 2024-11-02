@@ -1,0 +1,22 @@
+# 2490. Circular Sentence
+class Solution {
+    public boolean isCircularSentence(String sentence) {
+        int n = sentence.length();
+        // Check if the sentence's last character is the same as the first character.
+        if(sentence.charAt(n-1)!=sentence.charAt(0)){
+            return false;
+        }
+        int i =0;
+        while(i<n){
+             // Move `i` forward until we reach a space or the end of the sentence.
+            while(i<n && sentence.charAt(i)!=' '){
+                i++;
+            } 
+            if(i<n && sentence.charAt(i-1)!=sentence.charAt(i+1)){
+                return false;
+            }
+            i++;     
+        }
+        return true ;
+    }
+}
