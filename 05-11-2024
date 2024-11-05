@@ -1,0 +1,15 @@
+#2914. Minimum Number of Changes to Make Binary String Beautiful
+class Solution {
+    public int minChanges(String s) {
+        int count = 0;  
+        for(int i=0; i<s.length()-1;i+=2){
+            int j =i+1;
+        // Check if the characters in the current pair are different
+            if(s.charAt(i)!=s.charAt(j)){
+                count ++; //Increment count since a change is needed to make them identical
+            }
+        }
+        return count;
+
+    }
+}
