@@ -1,0 +1,28 @@
+#1975. Maximum Matrix Sum
+class Solution {
+    public long maxMatrixSum(int[][] matrix) {
+        int m=matrix.length;
+        int n=matrix[0].length;
+        long sum=0;
+        int countNegative=0;
+        int smallestAbsolute=Integer.MAX_VALUE;
+        
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+       // Add the absolute value of the current element to the total sum
+                sum+=Math.abs(matrix[i][j]);
+                if(matrix[i][j]<0){
+                    countNegative++;
+                }
+       // Track the smallest absolute value in the matrix
+                smallestAbsolute=Math.min(smallestAbsolute,Math.abs(matrix[i][j]));
+            }
+        }
+        if(countNegative%2==0){
+            return sum;
+        }
+        //If there's an odd number of negatives, flip all but one, 
+        // subtract twice the smallest absolute value to adjust for one unflipped negative
+        return sum-2L*smallestAbsolute;
+    }
+}
